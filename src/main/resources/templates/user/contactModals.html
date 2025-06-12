@@ -1,0 +1,114 @@
+<div data-th-fragment="contact">
+  <!-- Main modal -->
+  <div
+    id="viewContactModal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="modal fade"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <!-- Modal header -->
+        <div class="modal-header">
+          <div class="w-100 d-flex flex-column align-items-center gap-2">
+            <img
+              onerror="this.src='https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png'"
+              id="contact_image"
+              class="rounded-circle"
+              style="width: 128px; height: 128px;"
+              src=""
+              alt=""
+            />
+            <h3
+              id="contact_name"
+              class="h5 fw-semibold text-dark mb-0"
+            ></h3>
+            <p class="text-muted mb-0" id="contact_email"></p>
+            <p class="text-muted" id="contact_phone">889794564614</p>
+          </div>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onclick="closeContactModal()"
+          ></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!--  other contact information  -->
+          <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </th>
+                  <td>
+                    <span id="contact_address">
+                      Vishesh Khand gomti nagar lucknow
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fa-solid fa-user"></i>
+                  </th>
+                  <td>
+                    <span id="contact_about">
+                      He is professional programmer
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fa-regular fa-heart"></i>
+                  </th>
+                  <td>
+                    <span id="contact_favorite">
+                      This is your favorite contact
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fa-solid fa-earth-americas"></i>
+                  </th>
+                  <td>
+                    <a id="contact_website" href="#" target="_blank">
+                      www.learncodewithdurgesh.com
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </th>
+                  <td>
+                    <a id="contact_linkedIn" href="#" target="_blank">
+                      www.learncodewithdurgesh.com
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onclick="closeContactModal()"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

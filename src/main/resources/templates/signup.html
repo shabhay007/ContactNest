@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
+>
+  <head>
+    <title>SignUp Page</title>
+  </head>
+
+  <body>
+    <div id="content">
+      <div class="container my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div
+              class="card shadow rounded-4 border-top border-primary border-3"
+            >
+              <div class="card-body">
+                <!-- alert message -->
+                <div th:replace="~{message::message}"></div>
+
+                <div class="text-center">
+                  <h4 class="card-title fw-bold">Sign Up Here</h4>
+                  <p class="card-text fw-bold text-secondary">Manage contacts on cloud...</p>
+                </div>
+
+                <!-- form  -->
+                <form
+                  data-th-action="@{'/do-register'}"
+                  data-th-object="${userForm}"
+                  method="post"
+                  class="mt-4"
+                >
+                  <!-- name -->
+                  <!-- th:field will set both name and value; no need for name="name" -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      th:field="*{name}"
+                      id="name"
+                      placeholder="Enter your name"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}"
+                      class="text-danger fw-normal"
+                    >
+                      Username required
+                    </p>
+
+                  </div>
+
+                  <!-- email -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      th:field="*{email}"
+                      id="email"
+                      placeholder="Enter your email"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}"
+                      class="text-danger fw-normal"
+                    >
+                    </p>
+
+                  </div>
+
+                  <!-- phone number -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="phoneNumber" class="form-label"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      th:field="*{phoneNumber}"
+                      id="phoneNumber"
+                      placeholder="Enter your email"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('phoneNumber')}"
+                      th:errors="*{phoneNumber}"
+                      class="text-danger fw-normal"
+                    >
+                    </p>
+
+                  </div>
+
+                  <!-- password -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="password" class="form-label"
+                      >New Password</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      th:field="*{password}"
+                      id="password"
+                      placeholder="Enter new password"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}"
+                      class="text-danger fw-normal"
+                    >
+                    </p>
+
+                  </div>
+
+                  <!-- about/description -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="about" class="form-label">About</label>
+                    <textarea
+                      class="form-control"
+                      id="about"
+                      th:field="*{about}"
+                      rows="3"
+                      placeholder="Write here..."
+                    ></textarea>
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('about')}"
+                      th:errors="*{about}"
+                      class="text-danger fw-normal"
+                    >
+                    </p>
+
+                  </div>
+
+                  <!-- button -->
+                  <div class="mb-3 d-flex justify-content-center gap-2">
+                    <button type="submit" class="btn btn-primary">
+                      Sign Up
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                      Reset
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      console.log("Home Page");
+    </script>
+  </body>
+</html>

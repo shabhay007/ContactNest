@@ -1,0 +1,52 @@
+<nav th:fragment="sidebar"
+     id="sidebar"
+     class="sidebar bg-info text-white p-3 position-fixed"
+     style="top: 56px; width: 250px; height: calc(100vh - 56px); z-index: 1000;">
+     
+    <!-- Sidebar Header -->
+    <div class="d-flex flex-column align-items-center justify-content-between mb-4">
+        <!-- to provide url we use @{} and to provide dynamic value we uses ${} -->
+        <img th:src="@{${loggedInUser.profilePicLink}}" class="" alt="">
+        <h5 class="m-0">Navigate from here</h5>
+        <span class="text-dark" th:text="${loggedInUser.name}"></span>
+        
+        <!-- Optional: close button on small screens -->
+        <!-- <button class="btn btn-sm btn-outline-light d-lg-none" id="sidebarToggleClose">
+            <i class="fas fa-times"></i>
+        </button> -->
+    </div>
+
+    <!-- Sidebar Menu -->
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/user/dashboard}">
+                <i class="fas fa-home me-2"></i> Dashboard
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/user/profile}">
+                <i class="fas fa-address-book me-2"></i> Profile
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{'/user/contacts/add'}">
+                <i class="fas fa-plus me-2"></i> Add Contact
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{'/user/contacts'}">
+                <i class="fas fa-list me-2"></i> All Contact
+            </a>
+        </li>
+    </ul>
+
+    <!-- Logout link at bottom -->
+    <div class="mt-auto pt-4 border-top">
+        <a class="nav-link text-danger" th:href="@{/do-logout}">
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </a>
+    </div>
+</nav>

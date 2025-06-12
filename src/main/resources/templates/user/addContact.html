@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
+>
+  <head>
+    <title>Add Contact</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="container my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div
+              class="card shadow rounded-4 border-top border-primary border-3"
+            >
+              <div class="card-body">
+                <!-- alert message -->
+                <div th:replace="~{message::message}"></div>
+
+                <div class="text-center">
+                  <h4 class="card-title fw-bold">Add Contact</h4>
+                  <p class="card-text fw-bold text-secondary">Keep your contact on cloud...</p>
+                </div>
+
+                <!-- Contact Form -->
+                <form
+                  class="mt-4"
+                  th:action="@{'/user/contacts/add'}"
+                  th:object="${contactForm}"
+                  method="post"
+                  enctype="multipart/form-data"
+                >
+                  <!-- Name -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      th:field="*{name}"
+                      class="form-control"
+                      placeholder="Enter name"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}"
+                      class="text-danger fw-normal"
+                    >
+                      Username required
+                    </p>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      th:field="*{email}"
+                      placeholder="Enter email"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}"
+                      class="text-danger fw-normal"
+                    ></p>
+                  </div>
+
+                  <!-- Phone -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      th:field="*{phoneNumber}"
+                      placeholder="Enter phone number"
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('phoneNumber')}"
+                      th:errors="*{phoneNumber}"
+                      class="text-danger fw-normal"
+                    ></p>
+                  </div>
+
+                  <!-- Address -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea
+                      class="form-control"
+                      th:field="*{address}"
+                      rows="2"
+                      placeholder="Enter address"
+                    ></textarea>
+
+                    <!-- validation error -->
+                    <p
+                      th:if="${#fields.hasErrors('address')}"
+                      th:errors="*{address}"
+                      class="text-danger fw-normal"
+                    ></p>
+                  </div>
+
+                  <!-- Description -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="description" class="form-label"
+                      >Description</label
+                    >
+                    <textarea
+                      class="form-control"
+                      th:field="*{description}"
+                      rows="3"
+                      placeholder="Short notes or description"
+                    ></textarea>
+                  </div>
+
+                  <!-- Website Link -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="website" class="form-label">Website Link</label>
+                    <input
+                      type="url"
+                      class="form-control"
+                      th:field="*{websiteLink}"
+                      placeholder="https://example.com"
+                    />
+                  </div>
+
+                  <!-- LinkedIn Link -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="linkedin" class="form-label">LinkedIn</label>
+                    <input
+                      type="url"
+                      class="form-control"
+                      th:field="*{linkedinLink}"
+                      placeholder="https://linkedin.com/in/username"
+                    />
+                  </div>
+
+                  <!-- image -->
+                  <div class="mb-3 fw-semibold">
+                    <label for="formFileMultiple" class="form-label"
+                      >Contact Image</label
+                    >
+                    <input
+                      id="imageFileInput"
+                      class="form-control mb-1"
+                      type="file"
+                      th:field="*{contactImage}"
+                      multiple
+                    />
+
+                    <!-- validation error -->
+                    <p
+                      class="text-danger fw-normal"
+                      data-th-if="${#fields.hasErrors('contactImage')}"
+                      data-th-errors="*{contactImage}"
+                    >
+                      Invalid Image
+                    </p>
+
+                    <img class="h-50 w-50" id="imagePreview" />
+                  </div>
+
+                  <!-- Favourite -->
+                  <div class="mb-3 form-check fw-semibold">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      th:field="*{favourite}"
+                    />
+                    <label class="form-check-label" for="favourite"
+                      >Mark as favourite</label
+                    >
+                  </div>
+
+                  <!-- Buttons -->
+                  <div class="mb-3 d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn btn-primary">
+                      Save Contact
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                      Reset
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script th:src="@{'/js/admin.js'}"></script>
+    <script>
+      console.log("Profile Page");
+    </script>
+  </body>
+</html>
